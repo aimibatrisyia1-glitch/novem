@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPY BIRTHDAYY!!!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="container">
+
+    <!-- ================= BLOOMING LILY POPUP MODAL ================= -->
+    <div id="flowerModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="lily-container">
+                <svg class="lily-svg" viewBox="0 0 100 100">
+                    <!-- Stem & Leaves -->
+                    <path class="lily-stem" d="M50,90 Q50,65 50,50" stroke="#7eb069" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <path class="lily-leaf leaf-left" d="M50,75 Q30,70 25,60 Q40,65 50,75" fill="#7eb069"/>
+                    <path class="lily-leaf leaf-right" d="M50,70 Q70,65 75,55 Q60,60 50,70" fill="#7eb069"/>
+                    
+                    <!-- Stamens (Center details) -->
+                    <g class="lily-stamens">
+                        <line x1="50" y1="50" x2="42" y2="30" stroke="#e0c068" stroke-width="1.5"/>
+                        <circle cx="42" cy="30" r="2" fill="#c49033"/>
+                        <line x1="50" y1="50" x2="50" y2="26" stroke="#e0c068" stroke-width="1.5"/>
+                        <circle cx="50" cy="26" r="2" fill="#c49033"/>
+                        <line x1="50" y1="50" x2="58" y2="30" stroke="#e0c068" stroke-width="1.5"/>
+                        <circle cx="58" cy="30" r="2" fill="#c49033"/>
+                    </g>
+
+                    <!-- Petals (Animated Blooming Effect) -->
+                    <g class="lily-petals">
+                        <!-- Back Petals -->
+                        <path class="petal petal-back-1" d="M50,50 Q30,30 35,15 Q50,30 50,50" fill="#fdeef4" stroke="#f4b6c2" stroke-width="1"/>
+                        <path class="petal petal-back-2" d="M50,50 Q70,30 65,15 Q50,30 50,50" fill="#fdeef4" stroke="#f4b6c2" stroke-width="1"/>
+                        <path class="petal petal-top" d="M50,50 Q40,20 50,10 Q60,20 50,50" fill="#ffffff" stroke="#f4b6c2" stroke-width="1"/>
+                        
+                        <!-- Front Petals -->
+                        <path class="petal petal-left" d="M50,50 Q20,45 15,30 Q40,35 50,50" fill="#ffffff" stroke="#f4b6c2" stroke-width="1"/>
+                        <path class="petal petal-right" d="M50,50 Q80,45 85,30 Q60,35 50,50" fill="#ffffff" stroke="#f4b6c2" stroke-width="1"/>
+                        <path class="petal petal-front" d="M50,50 Q35,60 50,65 Q65,60 50,50" fill="#fff5f7" stroke="#f4b6c2" stroke-width="1"/>
+                    </g>
+                </svg>
+            </div>
+            <h3>Right answer!</h3>
+            <p class="popup-subtext">One for you 🌸</p>
+            <button id="modalContinueBtn" onclick="closeFlowerModal()">Continue</button>
+        </div>
+    </div>
+
+    <!-- ================= INTRO ================= -->
+    <section id="intro" class="screen active">
+        <div class="small-text">IVE PREPARE SOMETHING FOR YOU</div>
+        <h1>YOU REALLY THOUGHT IM JUST GONNA SAY HAPPY BIRTHDAY</h1>
+        <p>
+            you're going to need a strong memory.
+        </p>
+        <button onclick="startGame()">BEGIN</button>
+    </section>
+
+    <!-- ================= PUZZLE 1 ================= -->
+    <section id="puzzle1" class="screen">
+        <div class="progress">01 / 03</div>
+        <div class="puzzle-icon">♡</div>
+        <h2>PUZZLE 1</h2>
+        <p class="question">Let's start from the beginning.</p>
+        <p>WHAT WAS THE FIRST MOVIE WE EVER WATCHED IN THEATER</p>
+        <div class="answers">
+            <button onclick="answerPuzzle1('wrong')">[THE FANTASTIC 4]</button>
+            <button onclick="answerPuzzle1('correct')">[KRAVEN THE HUNTER]</button>
+            <button onclick="answerPuzzle1('wrong')">[AVATAR FIRE AND ASH]</button>
+            <button onclick="answerPuzzle1('wrong')">[SUPERMAN]</button>
+        </div>
+        <p id="puzzle1Result" class="result"></p>
+    </section>
+
+    <!-- ================= PUZZLE 2 ================= -->
+    <section id="puzzle2" class="screen">
+        <div class="progress">02 / 03</div>
+        <div class="puzzle-icon">♡</div>
+        <h2>Remember This?</h2>
+        <p class="question">You should definitely know this one.</p>
+        <p>WHAT WAS THE NICKNAME WE GAVE TO YOUR FIRST STUFF ANIMAL I GAVE YOU</p>
+        <div class="answers">
+            <button onclick="answerPuzzle2('wrong')">[THUNDER]</button>
+            <button onclick="answerPuzzle2('wrong')">[STORM]</button>
+            <button onclick="answerPuzzle2('correct')">[SPEEDY]</button>
+            <button onclick="answerPuzzle2('wrong')">[LOKI]</button>
+        </div>
+        <p id="puzzle2Result" class="result"></p>
+    </section>
+
+    <!-- ================= PUZZLE 3 ================= -->
+    <section id="puzzle3" class="screen">
+        <div class="progress">03 / 03</div>
+        <div class="puzzle-icon">♡</div>
+        <h2>One Last Memory</h2>
+        <p class="question">This one is just between us.</p>
+        <p>WHAT IS THE FAV THING YOU LOVE ABOUT ME</p>
+        <div class="answer-box">
+            <input id="answer3" type="text" placeholder="Type your answer..." autocomplete="off">
+            <button onclick="checkPuzzle3()">Submit</button>
+        </div>
+        <p id="puzzle3Result" class="result"></p>
+    </section>
+
+    <!-- ================= FOUND ================= -->
+    <section id="found" class="screen">
+        <div class="big-symbol">✦</div>
+        <h1>You found it.</h1>
+        <p>You remembered all those little pieces of us.</p>
+        <p class="subtle">But there's still something waiting for you.</p>
+        <button onclick="showCard()">Continue</button>
+    </section>
+
+    <!-- ================= CARD ================= -->
+    <section id="cardSection" class="screen">
+        <div class="card-scene">
+            <div id="card" class="card">
+                <div class="card-front">
+                    <div class="card-decoration">♡</div>
+                    <h2>For You</h2>
+                    <p>There's something inside.</p>
+                    <button onclick="openCard()">Open</button>
+                </div>
+                <div class="card-inside">
+                    <div class="inside-content">
+                        <span class="tiny-label">ONE LAST THING</span>
+                        <h2>Wait...</h2>
+                        <p>You thought that was the end?</p>
+                        <button onclick="showPassword()">Look inside</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PASSWORD ================= -->
+    <section id="passwordSection" class="screen">
+        <div class="lock">🔐</div>
+        <div class="small-text">FINAL LOCK</div>
+        <h1>One last thing.</h1>
+        <p>The letter is only for you.</p>
+        <p>So the password should be something only <strong>we</strong> would know.</p>
+        <div class="password-box">
+            <input id="passwordInput" type="password" inputmode="numeric" maxlength="6" placeholder="••••••">
+            <button onclick="checkPassword()">Unlock</button>
+        </div>
+        <div class="hints">
+            <button onclick="showHint(1)">💡 Hint 1</button>
+            <button onclick="showHint(2)">💡 Hint 2</button>
+            <button onclick="showHint(3)">💡 Final Hint</button>
+        </div>
+        <p id="hintText" class="hint-text"></p>
+        <p id="passwordResult" class="result"></p>
+    </section>
+
+    <!-- ================= BLOSSOM ================= -->
+    <section id="blossomSection" class="screen blossom-screen">
+        <div id="flowers"></div>
+        <div class="blossom-center">
+            <div class="letter-card">
+                <div class="letter-top">✦</div>
+                <div class="letter-content">
+                    <div class="small-text">HAPPY BIRTHDAY</div>
+                    <h1>Dear my love,</h1>
+                    <p>Have the happiest 19th birthday. ❤️</p>
+                    <p>i lowkey cringe making this but hopefully it puts smile on those beautiful face</p>
+                    <p>this is a bit out of my character since im so mysterious</p>
+                    <p>I wanted you to feel special while im still here</p>
+                    <p>im glad i found you im so woke after i met you</p>
+                    <p>my love i wanted you to know that your eyes, your smile, your face, your voice just everything about you i love you</p>
+                    <p>in my eyes you more than perfect i wish you can see the way i see you. and you not a bad luck.</p>
+                    <p>i love you more than a languages in this world could describe it  im glad you came into my life eventho it has ups and downs</p>
+                    <p>and also dont let anyone defines you. you are what you love</p>
+                    <p class="final-message">Happy Birthday. ❤️</p>
+                    <p class="signature">— yours truly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="script.js?V=2"></script>
+</body>
+</html>
